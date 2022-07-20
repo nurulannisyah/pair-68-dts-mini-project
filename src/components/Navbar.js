@@ -1,41 +1,116 @@
-import * as React from "react";
+import { MovieFilter } from '@mui/icons-material';
+import { alpha, InputBase, styled } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import SearchIcon from '@mui/icons-material/Search';
+import * as React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-// importing material UI components
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuLogout from './MenuLogout';
 
-export default function Header() {
-return (
-	<AppBar position="static">
-		<Toolbar>
-		{/*Inside the IconButton, we
-		can render various icons*/}
-		<IconButton
-			size="large"
-			edge="start"
-			color="inherit"
-			aria-label="menu"
-			sx={{ mr: 2 }}
-		>
-			{/*This is a simple Menu
-			Icon wrapped in Icon */}
-			<MenuIcon />
-		</IconButton>
-		{/* The Typography component applies
-		default font weights and sizes */}
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.55),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.35),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
 
-		<Typography variant="h6"
-			component="div" sx={{ flexGrow: 1 }}>
-			BERCAHAYA
-		</Typography>
-		<Button color="inherit">Login</Button>
-    <Button color="inherit">Register</Button>
-		</Toolbar>
-	</AppBar>
-);
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
+
+const navItems = [
+  { text: 'Home', link: '/' },
+  { text: 'Pricing', link: '/pricing' },
+  { text: 'Movies', link: '/about' },
+  { text: 'About', link: '/about' }
+];
+
+const Navbar = () => {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <AppBar>
+        <Toolbar>
+          <MovieFilter sx={{ display: 'flex', mr: 1 }} />
+          <Typography
+            variant="h6"
+            sx={{
+              flexGrow: 1,
+              display: 'block',
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+            }}
+          >
+            <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/">
+              |PAIR-68-DTS
+            </Link>
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: 'block' }}>
+            {navItems.map((item) => (
+              <NavLink
+                to={item.link}
+                key={item.text}
+                className={({ isActive }) => isActive ? 'nav-active' : 'nav-inactive'}
+              >
+                {item.text}
+              </NavLink>
+            ))}
+            <MenuLogout />
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
 }
+
+export default Navbar;
