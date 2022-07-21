@@ -10,6 +10,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../authentication/firebase';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Login = () => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <><Navbar /><Container component="main" maxWidth="xs">
             <Box
                 sx={{
                     mt: 10,
@@ -54,8 +55,7 @@ const Login = () => {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
-                        autoFocus
-                    />
+                        autoFocus />
                     <TextField
                         margin="normal"
                         required
@@ -64,8 +64,7 @@ const Login = () => {
                         label="Password"
                         type="password"
                         id="password"
-                        autoComplete="current-password"
-                    />
+                        autoComplete="current-password" />
                     <Typography color='red'>{errorMessage}</Typography>
                     <Button
                         type="submit"
@@ -84,7 +83,7 @@ const Login = () => {
                     </Grid>
                 </Box>
             </Box>
-        </Container>
+        </Container></>
     );
 }
 

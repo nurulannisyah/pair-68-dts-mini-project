@@ -6,7 +6,7 @@ Ketentuan lengkap bisa dilihat di [Mini Project Guidelines](https://docs.google.
 
 Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
 
-`pair-58-dts-mini-project`
+`pair-68-dts-mini-project`
 
 Contoh: `pair-03-dts-mini-project`
 
