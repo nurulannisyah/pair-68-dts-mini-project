@@ -54,7 +54,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const navItems = [
   { text: 'Home', link: '/' },
   { text: 'Pricing', link: '/pricing' },
-  { text: 'Movies', link: '/about' },
   { text: 'About', link: '/about' }
 ];
 

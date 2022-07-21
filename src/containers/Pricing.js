@@ -8,7 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 
 const createData = (feature, bronze, gold, platinum) => {
     return { feature, bronze, gold, platinum };
@@ -32,7 +31,7 @@ const Pricing = () => {
     }
 
     return (
-        <><Navbar /><Box sx={{
+        <Box sx={{
             display: 'flex',
             flexDirection: 'column',
             margin: 5,
@@ -97,7 +96,7 @@ const Pricing = () => {
                     </TableFooter>
                 </Table>
             </TableContainer>
-        </Box></>
+        </Box>
     );
 }
 
