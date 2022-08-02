@@ -9,17 +9,18 @@ import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./containers/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./containers/Register";
 import Subscribed from "./containers/Subscribed";
-import DetailMovie from "./containers/DetailMovie";
-import Pricing from "./containers/Pricing";
 import Login from "./containers/Login";
 import About from "./containers/About";
 import theme from "./themes/theme";
 import NotFound from "./containers/NotFound";
 import React from "react";
+import Main from "./components/Main";
+import BooksList from "./containers/BooksList";
+import Seller from "./containers/Seller";
+
 
 const App = () => {
   return (
@@ -32,17 +33,27 @@ const App = () => {
             element={
               <>
                 <Navbar />
-                <Home />
+                <Main />
                 <Footer />
               </>
             }
           />
           <Route
-            path="pricing"
+            path="popular"
             element={
               <>
                 <Navbar />
-                <Pricing />
+                <BooksList />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="bestseller"
+            element={
+              <>
+                <Navbar />
+                <Seller />
                 <Footer />
               </>
             }
@@ -81,16 +92,6 @@ const App = () => {
             element={
               <ProtectedRoute loginOnly={false}>
                 <Register />
-                <Footer />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/movie/:id"
-            element={
-              <ProtectedRoute>
-                <Navbar />
-                <DetailMovie />
                 <Footer />
               </ProtectedRoute>
             }

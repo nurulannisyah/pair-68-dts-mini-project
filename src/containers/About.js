@@ -1,24 +1,25 @@
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const About = () => {
     return (
         <Box sx={{
             display: 'flex',
             flexDirection: 'column',
-            margin: 5,
+            margin: 20,
+            backgroundColor: '#e2e2e2',
         }}>
             <Typography component="div" variant="h4" align="center" sx={{ margin: 5 }}>
-                About Us <br/>
+             <h3><b>ABOUT US</b><br/></h3>  
                 
             </Typography>
-            <center>Pair 68 dts <br/>
-                Nurul Ayu Annisyah <br/></center>    
-            <Link to="description">Description</Link>
-            <Link to="services">Services</Link>
+            <h4><center> Nurul Ayu Annisyah <br/>
+                152235865100171</center> </h4>   
+
             <Outlet/>
         </Box>
+
     )
 }
 
